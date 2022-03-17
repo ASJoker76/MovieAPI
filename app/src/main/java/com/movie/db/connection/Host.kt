@@ -20,4 +20,6 @@ object Host {
     const val MOVIE_VIDEO = "movie/{id}/videos?"
     const val TV_VIDEO = "tv/{id}/videos?"
     const val PAGE_SIZE = 20
+
+    const val API_YT = "AIzaSyBnaFAYoWvYyt5N2dj1Js68jL8EA0QQQjY"
 }

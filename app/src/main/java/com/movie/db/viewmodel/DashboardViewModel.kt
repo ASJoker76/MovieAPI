@@ -93,7 +93,6 @@ class DashboardViewModel : ViewModel() {
             override fun onResponse(call: Call<ListMovieByGendre>, response: Response<ListMovieByGendre>) {
                 if(response.isSuccessful){
                     Log.e("isi data", response.body().toString())
-                    listbygenreLiveData?.postValue(null)
                     listbygenreLiveData?.postValue(response.body())
                 } else {
                     listbygenreLiveData?.postValue(null)

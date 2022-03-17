@@ -5,16 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
-import com.movie.db.R
 import com.movie.db.databinding.ListGendreBinding
 import com.movie.db.model.Genre
-import com.movie.db.model.Result
-import pokemon.co.id.connection.Host.URLIMAGE
 
 class GenreHorizontalAdapter
     (

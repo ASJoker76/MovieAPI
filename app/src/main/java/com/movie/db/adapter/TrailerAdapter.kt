@@ -14,12 +14,12 @@ import com.movie.db.databinding.ListItemFilmBinding
 import com.movie.db.model.ResultX
 import pokemon.co.id.connection.Host.URLIMAGE
 
-class MovieAdapter
+class TrailerAdapter
     (
         private val onItemClicked: (position: Int) -> Unit
     ) :
 
-    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+    RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
 
     var items = ArrayList<ResultX>()
     lateinit var mContext: Context

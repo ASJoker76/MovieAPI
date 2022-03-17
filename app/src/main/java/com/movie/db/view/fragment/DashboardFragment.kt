@@ -3,6 +3,8 @@ package com.movie.db.view.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,9 +52,11 @@ class DashboardFragment : Fragment(){
         viewModel?.getRecyclerListDataObserver()?.observe(viewLifecycleOwner, Observer<ListMovie>{
             if(it != null) {
                 //update the adapter
+                movieArrayList.clear()
+                movieHorizontalAdapter?.setDataList(it.results as ArrayList<ResultX>)
 
-                movieHorizontalAdapter?.setDataList(it.results as ArrayList<Result>)
-
+                movieAdapter?.setDataList(it.results as ArrayList<ResultX>)
+                movieArrayList.addAll(it.results)
             } else {
 
             }
@@ -69,9 +73,9 @@ class DashboardFragment : Fragment(){
         viewModel?.getRecyclerlistbygenreDataObserver()?.observe(viewLifecycleOwner, Observer<ListMovieByGendre>{
             if(it != null) {
                 //update the adapter
+                movieArrayList.clear()
                 movieAdapter?.setDataList(it.results as ArrayList<ResultX>)
                 movieArrayList.addAll(it.results)
-                movieArrayList.clear()
             } else {
 
             }
@@ -122,11 +126,24 @@ class DashboardFragment : Fragment(){
     }
 
     private fun onListItemClick3(position: Int) {
+        Log.e("posisi", position.toString())
 
+        val bundle = Bundle()
+        bundle.putParcelableArrayList(
+            "detailovie", movieArrayList
+        )
+        bundle.putInt("posisilist",position)
+        val fragementIntent = DetailMovieFragment()
+        val manager = activity?.supportFragmentManager
+        val transaction = manager?.beginTransaction()
+        transaction?.replace(R.id.fl_view, fragementIntent)
+        fragementIntent.setArguments(bundle)
+        transaction?.addToBackStack(null)
+        transaction?.commit()
     }
 
     private fun onListItemClick2(position: Int) {
-        binding.tvRekomendasi.setText(genreArrayList[position].name + genreArrayList[position].id.toString())
+        binding.tvRekomendasi.setText(genreArrayList[position].name)
         viewModel?.panggilapilistbygenre(genreArrayList[position].id)
     }
 

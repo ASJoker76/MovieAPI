@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.movie.db.R
-import com.movie.db.model.Result
+import com.movie.db.model.ResultX
 import pokemon.co.id.connection.Host.URLIMAGE
 
 class MovieHorizontalAdapter
@@ -21,7 +21,7 @@ class MovieHorizontalAdapter
 
     RecyclerView.Adapter<MovieHorizontalAdapter.ViewHolder>() {
 
-    var items = ArrayList<Result>()
+    var items = ArrayList<ResultX>()
     lateinit var mContext: Context
     private val lastPosition = -1
 
@@ -33,7 +33,7 @@ class MovieHorizontalAdapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data: Result = items[position]
+        val data: ResultX = items[position]
         Glide.with(mContext)
             .load(URLIMAGE + data.poster_path)
             .apply(
@@ -79,7 +79,7 @@ class MovieHorizontalAdapter
         private const val FADE_DURATION = 1000 //FADE_DURATION in milliseconds
     }
 
-    fun setDataList(data :  ArrayList<Result>) {
+    fun setDataList(data :  ArrayList<ResultX>) {
         this.items = data
         notifyDataSetChanged()
     }
